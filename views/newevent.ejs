@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%-include("navbar.ejs")%>
+    <div class="container my-5">
+
+  <div class="card shadow-lg border-0 rounded-4">
+
+    <!-- Header -->
+    <div class="card-header bg-success text-white text-center rounded-top-4 py-3">
+      <h4 class="mb-0">
+        <i class="fa-solid fa-calendar-plus me-2"></i>Create Event
+      </h4>
+    </div>
+
+    <!-- Form -->
+    <div class="card-body p-4">
+      <form class="row g-3 needs-validation" novalidate action="/newevent" method="post">
+
+        <!-- Organizer -->
+        <div class="col-12">
+          <label for="organized" class="form-label fw-semibold">Organized By</label>
+          <input type="text" class="form-control form-control-lg" id="organized" name="organized" required>
+          <div class="invalid-feedback">Please enter organizer name.</div>
+        </div>
+
+        <!-- Head -->
+        <div class="col-md-6">
+          <label for="headname" class="form-label fw-semibold">Event Head Name</label>
+          <input type="text" class="form-control form-control-lg" id="headname" name="headname" required>
+          <div class="invalid-feedback">Enter head name.</div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="contact" class="form-label fw-semibold">Contact Number</label>
+          <input type="text" class="form-control form-control-lg" id="contact" name="contact" required>
+          <div class="invalid-feedback">Enter contact number.</div>
+        </div>
+
+        <!-- Title -->
+        <div class="col-12">
+          <label for="title" class="form-label fw-semibold">Event Title</label>
+          <input type="text" class="form-control form-control-lg" id="title" name="title" required>
+          <div class="invalid-feedback">Enter event title.</div>
+        </div>
+
+        <!-- Description -->
+        <div class="col-12">
+          <label for="description" class="form-label fw-semibold">Description</label>
+          <textarea name="description" class="form-control form-control-lg" id="description" rows="4" required></textarea>
+          <div class="invalid-feedback">Provide event details.</div>
+        </div>
+
+        <!-- Venue -->
+        <div class="col-md-6">
+          <label for="venue" class="form-label fw-semibold">Venue</label>
+          <input type="text" class="form-control form-control-lg" id="venue" name="venue" required>
+          <div class="invalid-feedback">Enter venue.</div>
+        </div>
+
+        <!-- Date -->
+        <div class="col-md-3">
+          <label for="date" class="form-label fw-semibold">Date</label>
+          <input type="text" class="form-control form-control-lg" id="date" name="date" required>
+          <div class="invalid-feedback">Select date.</div>
+        </div>
+
+        <!-- Time -->
+        <div class="col-md-3">
+          <label for="time" class="form-label fw-semibold">Time</label>
+          <input type="text" class="form-control form-control-lg" id="time" name="time" required>
+          <div class="invalid-feedback">Select time.</div>
+        </div>
+
+        <!-- Button -->
+        <div class="col-12 text-center mt-4">
+          <button type="submit" class="btn btn-success btn-lg px-5">
+            <i class="fa-solid fa-paper-plane me-2"></i>Create Event
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+</div>
+  <%- include("footer.ejs") %>
+  <script>
+    (() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+  </script>
+</body>
+</html>

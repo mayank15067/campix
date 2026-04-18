@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%-include("navbar.ejs")%>
+    <div class="container my-5">
+
+  <div class="card shadow-lg border-0 rounded-4">
+    
+    <!-- Header -->
+    <div class="card-header bg-primary text-white text-center rounded-top-4 py-3">
+      <h4 class="mb-0">
+        <i class="fa-solid fa-pen-to-square me-2"></i>Submit Complaint
+      </h4>
+    </div>
+
+    <!-- Form -->
+    <div class="card-body p-4">
+      <form class="row g-3 needs-validation" novalidate action="/newcomplaints" method="post">
+
+        <!-- Name -->
+        <div class="col-md-6">
+          <label for="firstname" class="form-label fw-semibold">First Name</label>
+          <input name="firstname" type="text" class="form-control form-control-lg" id="firstname" required>
+          <div class="invalid-feedback">Please enter your first name.</div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="lastname" class="form-label fw-semibold">Last Name</label>
+          <input name="lastname" type="text" class="form-control form-control-lg" id="lastname">
+        </div>
+
+        <!-- Title -->
+        <div class="col-12">
+          <label for="title" class="form-label fw-semibold">Complaint Title</label>
+          <input type="text" name="title" class="form-control form-control-lg" id="title" required>
+          <div class="invalid-feedback">Please enter a title.</div>
+        </div>
+
+        <!-- Description -->
+        <div class="col-12">
+          <label for="description" class="form-label fw-semibold">Description</label>
+          <textarea name="description" class="form-control form-control-lg" id="description" rows="4" required></textarea>
+          <div class="invalid-feedback">Please provide details.</div>
+        </div>
+
+        <!-- Academic Info -->
+        <div class="col-md-6">
+          <label for="enrollment" class="form-label fw-semibold">Enrollment Number</label>
+          <input type="text" class="form-control form-control-lg" id="enrollment" name="enrollment" required>
+          <div class="invalid-feedback">Enter enrollment number.</div>
+        </div>
+
+        <div class="col-md-3">
+          <label for="year" class="form-label fw-semibold">Year</label>
+          <input type="number" class="form-control form-control-lg" id="year" name="year" required>
+          <div class="invalid-feedback">Enter year.</div>
+        </div>
+
+        <div class="col-md-3">
+          <label for="sem" class="form-label fw-semibold">Semester</label>
+          <input type="number" class="form-control form-control-lg" id="sem" name="sem" required>
+          <div class="invalid-feedback">Enter semester.</div>
+        </div>
+
+        <!-- Button -->
+        <div class="col-12 text-center mt-4">
+          <button type="submit" class="btn btn-primary btn-lg px-5">
+            <i class="fa-solid fa-paper-plane me-2"></i>Submit Complaint
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+</div>
+  <%- include("footer.ejs") %>
+  <script>
+    (() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+  </script>
+</body>
+</html>

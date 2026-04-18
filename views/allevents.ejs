@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    <style>
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+</style>
+</head>
+<body>
+    <%-include("navbar.ejs")%>
+
+
+
+
+<div class="container my-5 ">
+
+  <h2 class="text-center mb-5 fw-bold text-primary">
+    <i class="fa-solid fa-calendar-days me-2"></i>All Events
+  </h2>
+
+  <div class="row g-4 ">
+
+    <% for(event of events) { %>
+
+      <div class="col-lg-4 col-md-6 card shadow-sm border rounded-3 card-hover">
+
+        <div class="card h-100 shadow-sm border-0 rounded-4">
+
+          <div class="card-body d-flex flex-column">
+
+            <!-- Title -->
+            <h5 class="card-title fw-bold text-dark">
+              <%= event.title %>
+            </h5>
+
+            <!-- Organizer -->
+            <h6 class="text-muted mb-2">
+              <i class="fa-solid fa-user me-1"></i>
+              <%= event.organized %>
+            </h6>
+
+            <!-- Description -->
+            <p class="card-text small text-secondary">
+              <%= event.description %>
+            </p>
+
+            <!-- Divider -->
+            <hr>
+
+            <!-- Details -->
+            <p class="mb-1">
+              <i class="fa-solid fa-location-dot text-danger me-2"></i>
+              <strong>Venue:</strong> <%= event.venue %>
+            </p>
+
+            <p class="mb-1">
+              <i class="fa-solid fa-calendar text-primary me-2"></i>
+              <strong>Date:</strong> <%= event.date %>
+            </p>
+
+            <p class="mb-2">
+              <i class="fa-solid fa-clock text-success me-2"></i>
+              <strong>Time:</strong> <%= event.time %>
+            </p>
+
+            <p class="small text-muted mb-3">
+              <strong>Head:</strong> <%= event.headname %> <br>
+              <strong>Contact:</strong> <%= event.contact %>
+            </p>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    <% } %>
+
+  </div>
+
+</div>
+
+
+    <%- include("footer.ejs") %>
+    
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Complaints</title>
+</head>
+
+<body>
+
+  <%- include("adminnavbar.ejs") %>
+
+<div class="container my-5">
+
+  <h2 class="text-center mb-5 fw-bold text-danger">
+    <i class="fa-solid fa-triangle-exclamation me-2"></i>All Complaints
+  </h2>
+
+
+    <% for (complain of complaints) { %>
+
+      <div class="card shadow-sm border rounded-3 mb-4 col-lg-6">
+        <div class="card-body">
+
+          <!-- Title -->
+          <h5 class="card-title mb-1">
+            <%= complain.title %>
+          </h5>
+
+          <!-- Status -->
+          <h6 class="text-muted mb-2">
+            Status: <%= complain.status %>
+          </h6>
+
+          <!-- Description -->
+          <p class="card-text">
+            <%= complain.description %>
+          </p>
+
+          <!-- Votes -->
+          <p class="fw-semibold text-primary">
+            Votes: <%= complain.votes %>
+          </p>
+
+          <hr>
+
+          <!-- User Info -->
+          <p class="mb-1">
+            <strong>Registered By:</strong>
+            <%= complain.firstname %> <%= complain.lastname %>
+          </p>
+
+          <p class="mb-1">
+            <strong>Enrollment Number:</strong>
+            <%= complain.enrollment %>
+          </p>
+
+          <p class="mb-3">
+            <strong>Year:</strong> <%= complain.year %> |
+            <strong>Sem:</strong> <%= complain.sem %>
+          </p>
+
+          <!-- Buttons -->
+          <div class="d-flex flex-wrap gap-2">
+
+            <a href="/admin/complaints/<%= complain._id %>/under review" class="btn btn-info btn-sm">
+              Under Review
+            </a>
+
+            <a href="/admin/complaints/<%= complain._id %>/In Progress" class="btn btn-warning btn-sm">
+              In Progress
+            </a>
+
+            <a href="/admin/complaints/<%= complain._id %>/Rsolved" class="btn btn-success btn-sm">
+              Resolved
+            </a>
+
+            <a href="/admin/complaints/<%= complain._id %>/Rejected" class="btn btn-danger btn-sm">
+              Reject
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+
+    <% } %>
+
+  </div>
+</div>
+
+  <%- include("footer.ejs") %>
+
+</body>
+</html>
+
+
+    
+    
+    
+</body>
+</html>
